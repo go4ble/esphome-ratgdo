@@ -12,6 +12,9 @@ substitutions:
   dry_contact_light_pin: GPIO27
 
 web_server:
+  auth:
+    username: !secret web_server_username
+    password: !secret web_server_password
 
 esphome:
   name: ${id_prefix}
@@ -24,12 +27,12 @@ esphome:
 esp32:
   board: esp32dev
 
-dashboard_import:
-  package_import_url: github://ratgdo/esphome-ratgdo/v32board.yaml@main
+#dashboard_import:
+#  package_import_url: github://go4ble/esphome-ratgdo/v32board.yaml@main
 
 packages:
   remote_package:
-    url: https://github.com/ratgdo/esphome-ratgdo
+    url: https://github.com/go4ble/esphome-ratgdo
     ref: ratgdo32
     files: [base.yaml]
     refresh: 1s
@@ -57,10 +60,22 @@ time:
 
 api:
   id: api_server
+  encryption:
+    key: !secret api_server_encryption_key
 
-improv_serial:
+#improv_serial:
 
 wifi:
+  domain: ""
   ap:
 
-logger:
+mdns:
+  disabled: true
+
+captive_portal:
+
+ota:
+  - platform: esphome
+    password: !secret web_server_password
+
+#logger:

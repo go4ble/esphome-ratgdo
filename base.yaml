@@ -2,7 +2,7 @@
 external_components:
   - source:
       type: git
-      url: https://github.com/ratgdo/esphome-ratgdo
+      url: https://github.com/go4ble/esphome-ratgdo
       ref: ratgdo32
     refresh: 1s
   # - source:
@@ -50,9 +50,9 @@ api:
             id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::ACCESSORY);
           }
 
-ota:
-  - platform: esphome
-    id: ratgdo_ota
+#ota:
+#  - platform: esphome
+#    id: ratgdo_ota
 
 sensor:
   - platform: ratgdo
