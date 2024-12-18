@@ -12,6 +12,9 @@ substitutions:
   dry_contact_light_pin: D3
 
 web_server:
+  auth:
+    username: !secret web_server_username
+    password: !secret web_server_password
 
 esphome:
   name: ${id_prefix}
