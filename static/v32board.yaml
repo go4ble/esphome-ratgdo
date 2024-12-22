@@ -50,8 +50,15 @@ switch:
 
 sensor:
   - platform: wifi_signal
+    id: wifi_signal_db
     name: "WiFi Signal"
     update_interval: 120s
+  - platform: copy
+    source_id: wifi_signal_db
+    name: "WiFi Signal Quality"
+    filters:
+      - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
+    unit_of_measurement: "%"
 
 # Sync time with Home Assistant.
 time:
